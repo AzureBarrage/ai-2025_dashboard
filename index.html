@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign AI Strategy Dashboard 2025</title>
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --success: #10b981;
+            --bg: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 40px 10px;
+            color: var(--primary);
+        }
+
+        #report-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 25px;
+            margin-bottom: 35px;
+        }
+
+        .export-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .chart-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .insight-box {
+            background: #eff6ff;
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        h1 { font-size: 2rem; letter-spacing: -0.5px; margin: 0; }
+        h2 { font-size: 1.1rem; color: #64748b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        @media print { .export-btn { display: none; } }
+    </style>
+</head>
+<body>
+
+<div id="report-content">
+    <div class="header">
+        <div>
+            <h1>Sovereign AI Strategy Dashboard</h1>
+            <p style="color: #64748b; margin-top: 5px;">Executive Intelligence Report | Q4 2025 Update</p>
+        </div>
+        <button class="export-btn" onclick="generatePDF()">
+            <i class="fas fa-file-pdf"></i> GENERATE EXECUTIVE REPORT
+        </button>
+    </div>
+
+    <div class="grid">
+        <div class="chart-card">
+            <h2>Adoption by Sector (%)</h2>
+            <div id="barChart"></div>
+        </div>
+        <div class="chart-card">
+            <h2>Operational Maturity</h2>
+            <div id="radarChart"></div>
+        </div>
+    </div>
+
+    <div class="chart-card">
+        <h2>Token Inference Cost Efficiency (USD per 1M Tokens)</h2>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 10px;">Exponential decline in API pricing (Logarithmic Scale Impact)</p>
+        <div id="lineChart"></div>
+    </div>
+
+    <div class="insight-box">
+        <h3 style="margin-top: 0; color: var(--accent);">2025 STRATEGIC OUTLOOK</h3>
+        <p style="line-height: 1.6; margin-bottom: 0;">
+            89% of enterprises have now adopted AI, yet only 23% can quantify ROI. 
+            Organizations utilizing <strong>Agentic AI</strong>—systems capable of autonomous planning and reasoning—are 
+            reporting 3.2x higher productivity gains. Strategic focus has pivoted from raw model size to 
+            <strong>Inference Efficiency</strong> and local data sovereignty.
+        </p>
+    </div>
+</div>
+
+<script>
+    const chartTheme = {
+        font: { family: 'Inter' },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)'
+    };
+
+    // 1. Sector Adoption (2025 Benchmarks)
+    Plotly.newPlot('barChart', [{
+        x: ['Tech', 'Finance', 'Health', 'Manuf.'],
+        y: [88, 76, 66, 54],
+        type: 'bar',
+        marker: { color: '#2563eb' }
+    }], { ...chartTheme, height: 280, margin: { t: 5, b: 40, l: 30, r: 10 } });
+
+    // 2. Operational Radar
+    Plotly.newPlot('radarChart', [{
+        type: 'scatterpolar',
+        r: [90, 85, 75, 80, 85, 90],
+        theta: ['Accuracy', 'Speed', 'Cost', 'Privacy', 'Scale', 'Agility'],
+        fill: 'toself',
+        fillcolor: 'rgba(37, 99, 235, 0.2)',
+        line: { color: '#2563eb' }
+    }], {
+        ...chartTheme,
+        polar: { radialaxis: { visible: true, range: [0, 100] } },
+        height: 280,
+        margin: { t: 30, b: 30, l: 40, r: 40 }
+    });
+
+    // 3. Inference Cost Decay (2022-2025)
+    Plotly.newPlot('lineChart', [{
+        x: ['Dec 22', 'Jun 23', 'Dec 23', 'Jun 24', 'Dec 24', 'Dec 25'],
+        y: [20.00, 12.00, 5.00, 1.20, 0.07, 0.02],
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { shape: 'spline', color: '#10b981', width: 4 },
+        marker: { size: 8 }
+    }], {
+        ...chartTheme,
+        height: 350,
+        margin: { t: 10, b: 40, l: 50, r: 20 },
+        yaxis: { title: 'USD per 1M Tokens', gridcolor: '#f1f5f9' },
+        xaxis: { gridcolor: '#f1f5f9' }
+    });
+
+    // 4. Premium PDF Export
+    function generatePDF() {
+        const element = document.getElementById('report-content');
+        const btn = document.querySelector('.export-btn');
+        btn.style.display = 'none';
+        
+        const opt = {
+            margin: 0.3,
+            filename: 'Executive_AI_Strategy_2025.pdf',
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: { scale: 3, useCORS: true, letterRendering: true },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save().then(() => {
+            btn.style.display = 'flex';
+        });
+    }
+</script>
+
+</body>
+</html>
