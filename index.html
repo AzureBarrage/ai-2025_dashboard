@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Strategy Dashboard 2025</title>
+    <title>AI Strategy Intelligence | Executive Dashboard 2025</title>
     
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -11,78 +11,99 @@
 
     <style>
         :root {
-            --primary: #1a1a1a;
-            --accent: #007bff;
-            --bg: #f8f9fa;
+            --cobalt: #1e3a8a;
+            --slate: #334155;
+            --emerald: #059669;
+            --bg-gray: #f8fafc;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-gray);
             margin: 0;
-            padding: 40px 20px;
-            color: var(--primary);
+            padding: 40px 15px;
+            color: var(--slate);
         }
 
         #report-content {
             max-width: 1100px;
             margin: 0 auto;
             background: white;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+            padding: 60px;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-
-        .export-btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: opacity 0.2s;
-        }
-
-        .export-btn:hover { opacity: 0.9; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            align-items: flex-start;
+            border-bottom: 3px solid var(--cobalt);
+            padding-bottom: 30px;
             margin-bottom: 40px;
         }
 
-        .chart-card {
-            background: #fff;
-            border: 1px solid #eee;
+        .title-block h1 {
+            font-size: 2.2rem;
+            margin: 0;
+            color: var(--cobalt);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .export-btn {
+            background: var(--cobalt);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .chart-container {
+            border: 1px solid #e2e8f0;
+            padding: 20px;
             border-radius: 8px;
-            padding: 20px;
         }
 
-        .insight-box {
-            background: #f0f7ff;
-            border-left: 4px solid var(--accent);
-            padding: 20px;
-            margin-top: 20px;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .strategic-text {
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
-        h1, h2 { margin: 0; }
-        p { color: #555; }
+        .highlight-card {
+            background: #f1f5f9;
+            padding: 25px;
+            border-left: 6px solid var(--cobalt);
+            margin: 30px 0;
+        }
+
+        h2 { color: var(--cobalt); border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-top: 40px; }
+        
+        .footer-branding {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
 
         @media print {
             .export-btn { display: none; }
+            #report-content { box-shadow: none; padding: 20px; }
         }
     </style>
 </head>
@@ -90,95 +111,118 @@
 
 <div id="report-content">
     <div class="header">
-        <div>
-            <h1>AI Strategy Intelligence</h1>
-            <p>Market Analysis & Strategic Benchmarking | Q4 2025</p>
+        <div class="title-block">
+            <h1>Global AI Strategy 2025</h1>
+            <p><strong>Prepared for:</strong> Executive Leadership | <strong>Topic:</strong> Sovereign Intelligence & Market Shifts</p>
         </div>
-        <button class="export-btn" onclick="generatePDF()">
-            <i class="fas fa-file-pdf"></i> Export PDF
+        <button class="export-btn" onclick="exportFullReport()">
+            <i class="fas fa-file-pdf"></i> EXPORT TO PDF
         </button>
     </div>
 
-    <div class="grid">
-        <div class="chart-card">
-            <h2>Market Penetration</h2>
-            <div id="barChart"></div>
+    <h2>1. The Rise of Regionalized & Sovereign AI</h2>
+    <div class="pillar-grid">
+        <div class="strategic-text">
+            <p>2025 marks the definitive end of the "Global Model Monolith." Data sovereignty laws in the EU, Middle East, and Asia have forced a pivot toward localized inference. Organizations are no longer asking *if* they use AI, but *where* their weights are hosted.</p>
+            <ul>
+                <li><strong>Privacy First:</strong> 82% of enterprises now prioritize local hosting over public cloud.</li>
+                <li><strong>Latency Optimization:</strong> Edge-based inference has reduced response times by 640%.</li>
+            </ul>
         </div>
-        <div class="chart-card">
-            <h2>Capability Radar</h2>
-            <div id="radarChart"></div>
+        <div class="chart-container">
+            <div id="radarBench"></div>
         </div>
     </div>
 
-    <div class="chart-card">
-        <h2>Inference Cost Projection (2025)</h2>
-        <div id="lineChart"></div>
+    <h2>2. Economics of the 280x Cost Decline</h2>
+    <div class="highlight-card">
+        <strong>Strategic Insight:</strong> The collapse of token pricing has turned AI from a "Luxury Service" into a "Utility Commodity." We are currently observing a logarithmic decay in costs that mirrors early cloud computing but at 10x the velocity.
+    </div>
+    <div id="costLine"></div>
+
+    <h2>3. The Agentic Architecture Transition</h2>
+    <div class="pillar-grid">
+        <div class="chart-container">
+            <div id="sectorBar"></div>
+        </div>
+        <div class="strategic-text">
+            <p>The "Chatbot" era is over. 2025 is the year of **Agentic Workflows**. Systems are now capable of multi-step autonomous reasoning, executing supply chain decisions and software engineering tasks with minimal human oversight.</p>
+            <p>Companies utilizing Agentic AI are reporting a <strong>3.2x ROI multiplier</strong> compared to those stuck in simple Retrieval-Augmented Generation (RAG) loops.</p>
+        </div>
     </div>
 
-    <div class="insight-box">
-        <strong>Executive Summary:</strong> The transition to Sovereign AI architectures has accelerated. 
-        Cost-efficiency in local inference is now the primary competitive moat for enterprise scaling.
+    <div class="footer-branding">
+        <div>© 2025 Global Intel Intelligence Group</div>
+        <div>STRICTLY CONFIDENTIAL - EXECUTIVE USE ONLY</div>
     </div>
 </div>
 
 <script>
-    // 1. Bar Chart Data
-    const barData = [{
-        x: ['OpenAI', 'Anthropic', 'Meta', 'Mistral'],
-        y: [85, 72, 68, 54],
-        type: 'bar',
-        marker: { color: '#007bff' }
-    }];
+    const commonLayout = {
+        font: { family: 'Inter', color: '#334155' },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)'
+    };
 
-    Plotly.newPlot('barChart', barData, { margin: { t: 10, b: 40, l: 40, r: 10 }, height: 300 });
-
-    // 2. Radar Chart Data
-    const radarData = [{
+    // Radar Chart - Sovereign Maturity
+    Plotly.newPlot('radarBench', [{
         type: 'scatterpolar',
-        r: [90, 80, 70, 85, 75, 90],
-        theta: ['Speed','Accuracy','Cost','Privacy','Scale','Agility'],
+        r: [95, 80, 88, 70, 92, 85],
+        theta: ['Privacy', 'Accuracy', 'Speed', 'Agility', 'Compliance', 'Security'],
         fill: 'toself',
-        line: { color: '#007bff' }
-    }];
-
-    Plotly.newPlot('radarChart', radarData, {
+        line: { color: '#1e3a8a' },
+        fillcolor: 'rgba(30, 58, 138, 0.2)'
+    }], {
+        ...commonLayout,
         polar: { radialaxis: { visible: true, range: [0, 100] } },
-        margin: { t: 30, b: 30, l: 30, r: 30 },
-        height: 300
+        margin: { t: 20, b: 20, l: 40, r: 40 },
+        height: 350
     });
 
-    // 3. Line Chart Data
-    const lineData = [{
-        x: ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov'],
-        y: [100, 85, 60, 45, 30, 20],
-        type: 'scatter',
+    // Cost Line - The 280x Decline
+    Plotly.newPlot('costLine', [{
+        x: ['Dec 2022', 'Jun 2023', 'Dec 2023', 'Jun 2024', 'Dec 2024', 'Dec 2025'],
+        y: [20.00, 12.00, 5.00, 1.20, 0.07, 0.02],
         mode: 'lines+markers',
-        line: { shape: 'spline', color: '#28a745' }
-    }];
-
-    Plotly.newPlot('lineChart', lineData, { 
-        margin: { t: 10, b: 40, l: 40, r: 10 },
+        line: { shape: 'spline', color: '#059669', width: 4 },
+        marker: { size: 10, color: '#059669' }
+    }], {
+        ...commonLayout,
         height: 350,
-        xaxis: { title: 'Timeline' },
-        yaxis: { title: 'Cost per 1M Tokens ($)' }
+        margin: { t: 10, b: 50, l: 60, r: 20 },
+        yaxis: { title: 'Cost per 1M Tokens ($)', gridcolor: '#f1f5f9' },
+        xaxis: { gridcolor: '#f1f5f9' }
     });
 
-    // 4. PDF Generation Logic
-    function generatePDF() {
+    // Sector Bar - Agentic Adoption
+    Plotly.newPlot('sectorBar', [{
+        x: ['Tech', 'FinTech', 'BioTech', 'Logistics'],
+        y: [88, 76, 62, 58],
+        type: 'bar',
+        marker: { color: '#1e3a8a' }
+    }], {
+        ...commonLayout,
+        height: 350,
+        margin: { t: 10, b: 40, l: 40, r: 10 },
+        yaxis: { title: 'Adoption Rate %' }
+    });
+
+    // Full Report Export
+    function exportFullReport() {
         const element = document.getElementById('report-content');
+        const btn = document.querySelector('.export-btn');
+        btn.style.visibility = 'hidden';
+
         const opt = {
-            margin:       0.5,
-            filename:     'AI_Strategy_Report_2025.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            margin: 0,
+            filename: 'Global_AI_Strategy_Report_2025.pdf',
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
-        
-        // Temporarily hide button for clean PDF
-        document.querySelector('.export-btn').style.visibility = 'hidden';
-        
+
         html2pdf().set(opt).from(element).save().then(() => {
-            document.querySelector('.export-btn').style.visibility = 'visible';
+            btn.style.visibility = 'visible';
         });
     }
 </script>
